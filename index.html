@@ -1,17 +1,110 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Florence Prime Meat Market — Established 1936</title><link rel="stylesheet" href="styles.css"></head>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Florence Prime Meat Market, 5 Jones Street, Greenwich Village. Cut to order since 1936.">
+<title>Florence Prime Meat Market — Established 1936</title>
+<style>
+:root{--paper:#f6f0e5;--ink:#282722;--green:#173f2f;--green2:#365e4b;--line:#c8bea8;--muted:#756f64}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:Georgia,"Times New Roman",serif;line-height:1.55}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;background:repeating-linear-gradient(0deg,rgba(90,70,40,.05),rgba(90,70,40,.05) 1px,transparent 1px,transparent 5px)}
+a{color:inherit}img{display:block;max-width:100%}.wrap{width:min(1120px,calc(100% - 34px));margin:auto;position:relative}
+.rule{display:flex;align-items:center;gap:12px;color:#77715f;margin:18px auto;max-width:620px}.rule:before,.rule:after{content:"";height:1px;background:var(--line);flex:1}
+.splash{min-height:100svh;display:grid;place-items:center;text-align:center;padding:26px 18px}.splash-inner{width:min(900px,95vw)}
+h1,h2,h3{color:var(--green);font-weight:400;margin:0}.splash h1,.splash h2{font-size:clamp(40px,6.2vw,72px);line-height:1.02;letter-spacing:-.035em}.splash h2{margin-top:7px}
+.store{width:min(690px,92vw);max-height:60vh;object-fit:contain;margin:4px auto 0;mix-blend-mode:multiply}.enter{font-size:18px;font-style:italic;color:var(--green2);margin-top:6px}
+nav{position:sticky;top:0;z-index:20;background:rgba(246,240,229,.95);backdrop-filter:blur(8px);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.navin{min-height:62px;display:flex;align-items:center;gap:18px}.brand{margin-right:auto;text-decoration:none;color:var(--green);text-transform:uppercase;letter-spacing:.14em;font-size:13px}
+.links{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:10px 18px}.links a{font:10px Arial,sans-serif;text-decoration:none;text-transform:uppercase;letter-spacing:.08em}.links a:hover{text-decoration:underline;text-underline-offset:4px}
+section{padding:72px 0;border-top:1px solid var(--line)}.kicker{font:10px Arial,sans-serif;text-transform:uppercase;letter-spacing:.18em;color:var(--green2);margin-bottom:12px}
+h2{font-size:clamp(42px,5.8vw,70px);line-height:1.04;letter-spacing:-.025em}h3{font-size:29px;line-height:1.12}.lede{font-size:21px;max-width:780px}p{font-size:17px;margin:12px 0 18px}
+.hero,.newport,.contact{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center}.watercolor{mix-blend-mode:multiply;filter:saturate(.95)}
+.hero img,.contact img{max-height:570px;object-fit:contain;margin:auto}.script{font-size:28px;font-style:italic;color:#3c4a41}
+.timeline{margin-top:30px}.era{display:grid;grid-template-columns:160px 1fr 300px;gap:32px;align-items:center;padding:30px 0;border-top:1px solid var(--line)}.year{font-size:52px;color:var(--green)}.era img{max-height:230px;object-fit:contain;margin:auto}
+.newport img{max-height:430px;object-fit:contain;margin:auto}ul{padding-left:20px}li{margin:7px 0}
+.counter-row{display:grid;grid-template-columns:.9fr 1.1fr;gap:42px;align-items:center;padding:34px 0;border-top:1px solid var(--line)}.counter-row:nth-child(even) .visual{order:2}.visual img{width:100%;max-height:280px;object-fit:contain;margin:auto}
+.commercial{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line)}.card{padding:34px 30px;border-bottom:1px solid var(--line);min-height:180px}.card:nth-child(odd){border-right:1px solid var(--line)}
+.button{display:inline-block;padding:12px 18px;background:var(--green);color:#fff;text-decoration:none;border:1px solid var(--green);font-size:16px}
+footer{text-align:center;padding:42px 0 58px;border-top:1px solid var(--line)}footer p{font-size:14px;margin:4px}.small{font:10px Arial,sans-serif;text-transform:uppercase;letter-spacing:.16em;color:var(--muted)}
+@media(max-width:760px){.links{display:none}.hero,.newport,.contact,.counter-row,.era{grid-template-columns:1fr}.commercial{grid-template-columns:1fr}.card:nth-child(odd){border-right:0}.counter-row:nth-child(even) .visual{order:0}.era .year{font-size:42px}section{padding:52px 0}.splash{min-height:92svh}}
+</style>
+</head>
 <body>
-<main class="splash">
-  <div class="splash-inner">
-    <div class="ornament"><span></span><b>◇</b><span></span></div>
-    <h1>Florence Prime Meat Market</h1>
-    <h2>Established 1936</h2>
-    <div class="ornament"><span></span><b>◇</b><span></span></div>
-    <a class="store-link" href="home.html" aria-label="Enter Florence Prime Meat Market website">
-      <img class="watercolor" src="assets/storefront.webp" alt="Watercolor of Florence Prime Meat Market storefront">
-    </a>
-    <div class="enter">Click the storefront to enter</div>
-  </div>
+<div id="top" class="splash">
+<div class="splash-inner">
+<div class="rule">◇</div>
+<h1>Florence Prime Meat Market</h1>
+<h2>Established 1936</h2>
+<div class="rule">◇</div>
+<a href="#home" aria-label="Enter Florence Prime Meat Market"><img class="store" src="assets/storefront.webp" alt="Watercolor Florence Prime Meat Market storefront"></a>
+<div class="enter">Click the storefront to enter</div>
+</div>
+</div>
+
+<nav><div class="wrap navin">
+<a class="brand" href="#top">Florence Prime Meat Market</a>
+<div class="links"><a href="#home">Home</a><a href="#story">Our Story</a><a href="#newport">Newport Steak</a><a href="#counter">At the Counter</a><a href="#commercial">Commercial Buyers</a><a href="#contact">Contact</a></div>
+</div></nav>
+
+<main class="wrap">
+<section id="home"><div class="hero">
+<div><div class="kicker">Greenwich Village · New York</div><h2>Cut to Order<br>Since 1936</h2><div class="rule">◇</div>
+<p class="lede">A Greenwich Village butcher shop where meat is still cut, trimmed and prepared to order by experienced butchers.</p>
+<p>For nearly nine decades, Florence has served Jones Street with quality meat, direct butcher service and an old-world approach that has survived generations of change around it.</p>
+<p class="script">Some things are worth keeping exactly as they are.</p></div>
+<img class="watercolor" src="assets/storefront.webp" alt="Florence storefront watercolor">
+</div></section>
+
+<section id="story">
+<div class="kicker">History</div><h2>Our Story</h2><p class="lede">Florence opened at 5 Jones Street in 1936. Its remarkable history has repeatedly passed from one butcher who learned the shop to the next.</p>
+<div class="timeline">
+<div class="era"><div class="year">1936</div><div><h3>Jack Ubaldi</h3><p>An Italian immigrant and master butcher establishes Florence Prime Meat Market at 5 Jones Street.</p></div><img class="watercolor" src="assets/storefront.webp" alt=""></div>
+<div class="era"><div class="year">1970s</div><div><h3>Tony Pellegrino</h3><p>Pellegrino, who had worked at Florence, becomes owner and continues its traditional cut-to-order service.</p></div><img class="watercolor" src="assets/meats.webp" alt=""></div>
+<div class="era"><div class="year">1990s</div><div><h3>Benny Pizzuco</h3><p>Pizzuco carries Florence through another generation while preserving the shop’s highly personal style of service.</p></div><img class="watercolor" src="assets/portraits.webp" alt="Watercolor portraits from Florence's history"></div>
+<div class="era"><div class="year">2022</div><div><h3>Aristeo Quiñonez</h3><p>After starting at Florence doing deliveries and cleaning, Quiñonez learns the trade, becomes head butcher and eventually takes over the business with his family.</p></div><img class="watercolor" src="assets/portraits.webp" alt=""></div>
+</div>
+<p class="script" style="text-align:center;margin-top:38px">Four owners. One shop. One tradition.</p>
+</section>
+
+<section id="newport"><div class="newport">
+<div><div class="kicker">A Florence Original</div><h2>The Newport Steak</h2><p class="script">Born on Jones Street.</p>
+<p>Florence is widely credited with originating the Newport Steak, developed by founder Jack Ubaldi from the bottom sirloin. It became a house signature because it delivers flavor, tenderness and value in a compact cut.</p>
+<h3>Why people love it</h3><ul><li>Rich beef flavor</li><li>Good tenderness when cooked properly</li><li>Excellent value</li><li>A genuine Florence signature</li><li>Ideal for grilling, cast iron or broiling</li></ul>
+<p class="script">Ask for a Newport. We’ll cut it for you.</p></div>
+<img class="watercolor" src="assets/meats.webp" alt="Watercolor steak cuts">
+</div></section>
+
+<section id="counter">
+<div class="kicker">Cut to Order</div><h2>At the Counter</h2><p class="lede">A selection of meats available, cut to your preferred thickness and trimmed to order.</p>
+<div class="counter-row"><div class="visual"><img class="watercolor" src="assets/meats.webp" alt="Watercolor beef"></div><div><h3>Beef</h3><ul><li>Newport Steak</li><li>Rib Steak & Rib Roast</li><li>Strip, Porterhouse & T-Bone</li><li>Skirt & Hanger Steak</li><li>Ground Beef & Custom Cuts</li></ul></div></div>
+<div class="counter-row"><div class="visual"><img class="watercolor" src="assets/tools.webp" alt="Watercolor butcher tools"></div><div><h3>Lamb · Pork · Poultry</h3><ul><li>Rack of Lamb, Lamb Chops, Leg & Shoulder</li><li>Pork Chops, Pork Roasts, Bacon & Fresh Sausages</li><li>Chicken, Turkey, Duck & seasonal poultry</li></ul></div></div>
+<div class="counter-row"><div class="visual"><img class="watercolor" src="assets/tools.webp" alt=""></div><div><h3>Sausages & Special Orders</h3><ul><li>House Sausages</li><li>Rolled Roasts</li><li>Holiday Orders</li><li>Custom Requests</li></ul><p>For holidays, gatherings and special requests, call ahead so the shop can prepare the order for you.</p></div></div>
+<p class="script" style="text-align:center">Cut to order. Trimmed to order. Prepared to order.</p>
+</section>
+
+<section id="commercial">
+<div class="kicker">For Professional Kitchens</div><h2>Commercial Buyers</h2><p class="lede">Traditional butcher service for chefs, restaurants, caterers, private clubs and hospitality businesses.</p>
+<div class="commercial">
+<div class="card"><h3>Custom Cutting</h3><p>Portion size, thickness, trim and preparation tailored to your menu and kitchen.</p></div>
+<div class="card"><h3>Restaurant & Hospitality Supply</h3><p>Discuss beef, lamb, pork, poultry and specialty requirements directly with the shop.</p></div>
+<div class="card"><h3>Standing Orders</h3><p>Set up recurring requirements and a predictable pickup or delivery pattern.</p></div>
+<div class="card"><h3>Specialty Cuts & Dry-Aged Beef</h3><p>Discuss Newport steaks, aged beef and harder-to-find cuts with an experienced butcher.</p></div>
+<div class="card"><h3>Holiday & Event Volume</h3><p>Plan larger-format roasts, events, catering requirements and seasonal volume ahead of time.</p></div>
+<div class="card"><h3>Direct Butcher Communication</h3><p>Speak with the people cutting the meat — not an anonymous procurement portal.</p></div>
+</div>
+<p style="text-align:center;margin-top:30px"><a class="button" href="tel:+12122426531">Discuss a Commercial Account · 212-242-6531</a></p>
+</section>
+
+<section id="contact"><div class="contact">
+<div><div class="kicker">Greenwich Village</div><h2>Visit & Contact</h2><p class="lede">Come by, call, or get in touch.</p>
+<p><strong>Florence Prime Meat Market</strong><br>5 Jones Street<br>New York, NY 10014</p>
+<p><a class="button" href="tel:+12122426531">212-242-6531</a></p>
+<p>For a special cut, larger order or holiday collection, call ahead.</p>
+<p><a href="https://www.instagram.com/florenceprimemeat/" target="_blank" rel="noopener">@florenceprimemeat on Instagram</a></p></div>
+<img class="watercolor" src="assets/storefront.webp" alt="Florence Prime Meat Market watercolor storefront">
+</div></section>
 </main>
+
+<footer><div class="wrap"><div class="rule">◇</div><p><strong>Florence Prime Meat Market</strong></p><p>5 Jones Street · New York, NY 10014 · 212-242-6531</p><p class="small">Established 1936 · Greenwich Village · New York</p></div></footer>
 </body></html>

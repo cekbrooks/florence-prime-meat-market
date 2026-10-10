@@ -1,6 +1,6 @@
 (function(){
 // Sample hours (placeholder). 0=Sun
-var HOURS={0:null,1:[9,18],2:[9,18],3:[9,18],4:[9,18],5:[9,18.5],6:[8,17]};
+var HOURS={0:null,1:null,2:[9,18],3:[9,18],4:[9,18],5:[9,18.5],6:[8,17]};
 var DAYN=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
 var DAYF=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 function fmtH(h){var hh=Math.floor(h),m=Math.round((h-hh)*60);var ap=hh>=12?"pm":"am";var d=hh%12||12;return d+(m?":"+String(m).padStart(2,"0"):"")+ap;}

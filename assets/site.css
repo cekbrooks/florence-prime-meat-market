@@ -62,6 +62,15 @@ header.top{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--p
 .mobilenav a[aria-current="page"]{color:var(--red)}
 
 .homeimg{width:220px;mix-blend-mode:multiply;margin-top:6px}
+/* Watercolor images */
+.pic{mix-blend-mode:multiply;height:auto}
+.pic.wide{width:min(360px,100%);margin-inline:auto}
+.pagehero{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:36px;align-items:center;margin-bottom:36px}
+.pagehero>.head,.pagehero>.stack{margin-bottom:0}
+.pic.side{width:260px;max-height:300px;object-fit:contain}
+.hgrid .pagehero,.two .pagehero{grid-template-columns:1fr;gap:24px}
+.hgrid .pagehero .pic.side,.two .pagehero .pic.side{width:220px;justify-self:start}
+.tileimg{width:100%;height:110px;object-fit:contain;mix-blend-mode:multiply;margin-bottom:6px}
 /* Home tiles */
 .tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
 .tile{display:grid;gap:10px;align-content:start;background:var(--tag);border:1px solid var(--line);padding:24px 22px;text-decoration:none;transition:border-color .2s,transform .2s}
@@ -219,7 +228,11 @@ footer .small{font:500 12px var(--label);letter-spacing:.16em;text-transform:upp
 
 @media (max-width:860px){
   .tiles{grid-template-columns:1fr}
-  .homeimg{display:none}
+  .homeimg{width:200px;margin-inline:auto;grid-column:1/-1}
+  .pagehero{grid-template-columns:1fr;gap:20px}
+  .pic.side{width:min(260px,80%);justify-self:center}
+  .era{grid-template-columns:90px minmax(0,1fr)}
+  .era img{display:block!important;grid-column:2;justify-self:start;width:120px}
   .sitefoot .cols{grid-template-columns:1fr 1fr}
   .links,.bar>.cta{display:none}
   .menubtn{display:block}

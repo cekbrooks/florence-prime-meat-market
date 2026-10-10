@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Visit & Hours · Florence Prime Meat Market</title>
+<meta name="description" content="Visit Florence Prime Meat Market at 5 Jones Street, New York.">
+<meta property="og:title" content="Visit & Hours · Florence Prime Meat Market">
+<meta property="og:description" content="Visit Florence Prime Meat Market at 5 Jones Street, New York.">
+<meta property="og:image" content="assets/storefront.webp">
+<meta name="theme-color" content="#173f2f">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23173f2f'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='40' text-anchor='middle' fill='%23f6f0e5'%3EF%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Barlow+Condensed:wght@500;600&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"ButcherShop","name":"Florence Prime Meat Market","foundingDate":"1936","telephone":"+1-212-242-6531","address":{"@type":"PostalAddress","streetAddress":"5 Jones Street","addressLocality":"New York","addressRegion":"NY","postalCode":"10014","addressCountry":"US"},"sameAs":["https://www.instagram.com/florenceprimemeat/"]}
+</script>
+</head>
+<body>
+<div class="demo">Preview site · The shop is a demo · No orders are placed</div>
+<header class="top">
+  <div class="wrap bar">
+    <a class="brand" href="home.html"><b>Florence Prime Meat Market</b><small>5 Jones St · Since 1936</small></a>
+    <nav class="links" aria-label="Main"><a href="home.html">Home</a><a href="story.html">Our Story</a><a href="newport.html">Newport Steak</a><a href="shop.html">Shop</a><a href="thanksgiving.html">Thanksgiving</a><a href="restaurants.html">Restaurants</a><a href="visit.html" aria-current="page">Visit</a></nav>
+    <button class="btn small cartbtn" id="openCart" type="button" aria-label="Open your order">Order <span class="count" id="count">0</span></button>
+    <button class="menubtn" id="menuBtn" type="button" aria-expanded="false" aria-controls="mobileNav" aria-label="Menu"><span></span></button>
+  </div>
+  <nav class="wrap mobilenav" id="mobileNav" hidden aria-label="Mobile"><a href="home.html">Home</a><a href="story.html">Our Story</a><a href="newport.html">Newport Steak</a><a href="shop.html">Shop</a><a href="thanksgiving.html">Thanksgiving</a><a href="restaurants.html">Restaurants</a><a href="visit.html" aria-current="page">Visit</a></nav>
+</header>
+<main>
+<section class="block" style="border-top:0" id="visit">
+  <div class="wrap visit">
+    <div class="stack">
+      <div class="kicker">Greenwich Village</div>
+      <h2>Visit &amp; hours</h2>
+      <p><strong>Florence Prime Meat Market</strong><br>5 Jones Street, between Bleecker and West 4th<br>New York, NY 10014</p>
+      <div class="copy"><a class="btn" href="tel:+12122426531">Call 212-242-6531</a><a class="btn ghost" href="https://maps.google.com/?q=Florence+Prime+Meat+Market+5+Jones+Street+New+York" target="_blank" rel="noopener">Directions</a></div>
+      <p>Local delivery covers zip codes 10003, 10011, 10012, 10013 and 10014.</p>
+      <p><a href="https://www.instagram.com/florenceprimemeat/" target="_blank" rel="noopener">@florenceprimemeat on Instagram</a></p>
+    </div>
+    <div>
+      <table class="hourtable" id="hourTable" aria-label="Weekly hours"></table>
+      <p class="fine" style="margin-top:10px">Sample hours, confirm with the shop before launch.</p>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="sitefoot">
+  <div class="wrap cols">
+    <div class="stack" style="gap:10px"><div class="fbrand">Florence Prime Meat Market</div><p>5 Jones Street<br>New York, NY 10014</p><p><a href="tel:+12122426531">212-242-6531</a></p></div>
+    <div><h4>Shop</h4><ul><li><a href="shop.html">Order ahead</a></li><li><a href="thanksgiving.html">Thanksgiving</a></li><li><a href="newport.html">Newport Steak</a></li><li><a href="restaurants.html">Restaurants</a></li></ul></div>
+    <div><h4>About</h4><ul><li><a href="story.html">Our Story</a></li><li><a href="visit.html">Visit &amp; Hours</a></li><li><a href="https://www.instagram.com/florenceprimemeat/" target="_blank" rel="noopener">Instagram</a></li></ul></div>
+    <div><h4>Hours</h4><p class="fine" style="font-size:15px">Mon to Fri 9am to 6pm<br>Sat 8am to 5pm<br>Sun closed<br><em>Sample hours</em></p></div>
+  </div>
+  <div class="wrap legal"><span>Established 1936 · Greenwich Village</span><span>© Florence Prime Meat Market</span></div>
+</footer>
+<div class="scrim" id="scrim" hidden></div>
+<aside class="drawer" id="drawer" hidden aria-label="Your order" role="dialog" aria-modal="true">
+  <div class="dhead"><h2 id="dTitle">Your order</h2><button class="x" id="closeCart" type="button" aria-label="Close">×</button></div>
+  <div class="dbody" id="dBody"></div>
+  <div class="dfoot" id="dFoot"></div>
+</aside>
+<div class="toast" id="toast" hidden></div>
+
+<script src="assets/site.js"></script>
+</body>
+</html>

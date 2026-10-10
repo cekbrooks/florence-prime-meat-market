@@ -119,7 +119,7 @@ section.block{padding-block:80px;border-top:1px solid var(--line)}
 .tagcard .cat{font:500 12px var(--label);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
 .tagcard h3{font-size:25px;padding-right:22px}
 .tagcard p{font-size:15px;color:var(--muted);line-height:1.5}
-.price{display:flex;align-items:baseline;gap:6px;font-variant-numeric:tabular-nums;border-top:1px dashed var(--line);padding-top:10px}
+.price{border-top:1px dashed var(--line);padding-top:10px}
 .price b{font:600 30px var(--label);color:var(--red);letter-spacing:.02em}
 .price span{font:500 14px var(--label);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 .price em{margin-left:auto;font:italic 14px var(--body);color:var(--muted)}
@@ -242,7 +242,7 @@ footer .small{font:500 12px var(--label);letter-spacing:.16em;text-transform:upp
   <a class="storelink" href="#story" aria-label="Enter Florence Prime Meat Market"><img src="assets/storefront.webp" width="220" height="275" alt="Watercolor of the Florence Prime Meat Market storefront with its green awning at 5 Jones Street"></a>
   <a class="enter" href="#story">Click the storefront to enter</a>
 </div>
-<div class="demo">Preview site · The shop is a demo · No orders are placed and no payments are taken</div>
+<div class="demo">Preview site · The shop is a demo · No orders are placed</div>
 <header class="top">
   <div class="wrap bar">
     <a class="brand" href="#top"><b>Florence Prime Meat Market</b><small>5 Jones St · Since 1936</small></a>
@@ -331,7 +331,7 @@ footer .small{font:500 12px var(--label);letter-spacing:.16em;text-transform:upp
     </div>
     <div class="filters" id="filters" role="group" aria-label="Filter by category"></div>
     <div class="grid" id="grid"></div>
-    <p class="weightnote">Meat is sold by weight, so totals are estimates. We hold your card for the estimate and charge the exact weight once your order is cut. If it comes in heavier, you never pay more than 10% over the estimate.</p>
+    <p class="weightnote">Everything is priced by weight at the counter. You pay when you pick up, or on delivery, for exactly what was cut.</p>
   </div>
 </section>
 <section class="block holiday" id="holiday">
@@ -344,9 +344,9 @@ footer .small{font:500 12px var(--label);letter-spacing:.16em;text-transform:upp
     </div>
     <div class="stack">
       <ol class="steps">
-        <li><div><b>Reserve online.</b> Choose the size you need. A $25 deposit holds it.</div></li>
+        <li><div><b>Reserve online.</b> Choose the size you need and we hold it for you.</div></li>
         <li><div><b>We source and prepare.</b> Turkeys come in fresh, never frozen. Roasts are trimmed and tied.</div></li>
-        <li><div><b>Pick up the week of.</b> Pay the balance by actual weight when you collect.</div></li>
+        <li><div><b>Pick up the week of.</b> Pay by weight when you collect.</div></li>
       </ol>
       <div class="grid" id="holidayGrid"></div>
     </div>
@@ -457,7 +457,7 @@ var days=document.getElementById("days"), table=document.getElementById("hourTab
 
 // Catalog (sample prices)
 var P=[
- {id:"newport",cat:"Beef",name:"Newport Steak",desc:"Our house original from the bottom sirloin. Big flavor, fair price.",ppl:22.99,unit:"piece",est:.6,thick:true,badge:"House original"},
+ {id:"newport",cat:"Beef",name:"Newport Steak",desc:"Our house original from the bottom sirloin. Big flavor, real tenderness.",ppl:22.99,unit:"piece",est:.6,thick:true,badge:"House original"},
  {id:"ribeye-da",cat:"Beef",name:"Dry-Aged Rib Steak",desc:"Bone-in, aged in house for about 30 days.",ppl:44.99,unit:"piece",est:1.4,thick:true},
  {id:"strip",cat:"Beef",name:"Prime Strip Steak",desc:"Boneless New York strip, trimmed to order.",ppl:29.99,unit:"piece",est:.8,thick:true},
  {id:"porter",cat:"Beef",name:"Porterhouse",desc:"Strip and filet on the bone. Made for two.",ppl:31.99,unit:"piece",est:1.8,thick:true},
@@ -490,12 +490,12 @@ function card(p){
   }else if(p.unit==="lb"){
     opts+='<label for="q-'+p.id+'">Weight<select id="q-'+p.id+'">'+[.5,1,1.5,2,3,4,5].map(function(n){return '<option value="'+n+'"'+(n===1?" selected":"")+'>'+n+' lb</option>';}).join("")+'</select></label><label>Trim<input value="To order" disabled></label>';
   }else{
-    opts+='<label for="q-'+p.id+'" style="grid-column:1/-1">Size<select id="q-'+p.id+'">'+p.sizes.map(function(s,i){return '<option value="'+i+'">'+s[0]+' · est. '+money(s[1]*p.ppl)+'</option>';}).join("")+'</select></label>';
+    opts+='<label for="q-'+p.id+'" style="grid-column:1/-1">Size<select id="q-'+p.id+'">'+p.sizes.map(function(s,i){return '<option value="'+i+'">'+s[0]+'</option>';}).join("")+'</select></label>';
   }
-  var right=p.unit==="size"?"$"+p.deposit+" deposit":(p.unit==="piece"?"about "+p.est+" lb each":"");
+  var right=p.unit==="size"?"Reserve now, pay at pickup":(p.unit==="piece"?"About "+p.est+" lb each":"Sold by the pound");
   return '<article class="tagcard">'+(p.badge?'<span class="badge">'+p.badge+'</span>':'')+
     '<div class="cat">'+p.cat+'</div><h3>'+p.name+'</h3><p>'+p.desc+'</p>'+
-    '<div class="price"><b>'+money(p.ppl)+'</b><span>/ lb</span><em>'+right+'</em></div>'+
+    (right?'<div class="price"><span>'+right+'</span></div>':'')+
     '<div class="opts">'+opts+'</div>'+
     '<button class="btn small" type="button" data-add="'+p.id+'">'+(p.unit==="size"?"Reserve":"Add to order")+'</button></article>';
 }
@@ -520,7 +520,7 @@ function lineEst(l){var p=byId[l.id];
   var f=p.thick?THICK[l.thick][1]:1;return l.qty*p.est*f*p.ppl;}
 function lineDesc(l){var p=byId[l.id];
   if(p.unit==="lb")return l.qty+" lb · trimmed to order";
-  if(p.unit==="size")return p.sizes[l.size][0]+" · $"+p.deposit+" deposit today";
+  if(p.unit==="size")return p.sizes[l.size][0]+" · holiday reservation";
   return l.qty+" × "+(p.thick?THICK[l.thick][0]+" thick":"about "+p.est+" lb each");}
 function add(id){var p=byId[id],q=document.getElementById("q-"+id),t=document.getElementById("t-"+id);
   var l={id:id,qty:1,thick:0,size:0};
@@ -562,12 +562,11 @@ function renderDrawer(){
     document.getElementById("goShop").onclick=function(){closeCart();location.hash="#shop";};return;}
   var t=totals();
   if(step==="cart"){
-    dBody.innerHTML=cart.map(function(l,i){var p=byId[l.id];return '<div class="line"><b>'+p.name+'</b><span class="amt">'+(p.unit==="size"?"$"+p.deposit:"~"+money(lineEst(l)))+'</span><small>'+lineDesc(l)+'</small>'+
+    dBody.innerHTML=cart.map(function(l,i){var p=byId[l.id];return '<div class="line"><b>'+p.name+'</b><small>'+lineDesc(l)+'</small>'+
       '<div class="qty">'+(p.unit==="size"?'':'<button type="button" data-dec="'+i+'" aria-label="Less">−</button><span>'+(p.unit==="lb"?l.qty+" lb":l.qty)+'</span><button type="button" data-inc="'+i+'" aria-label="More">+</button>')+'<button type="button" class="rm" data-rm="'+i+'">Remove</button></div></div>';}).join("")+
       '<label class="field" for="notes"><span>Notes for the butcher</span><textarea id="notes" placeholder="Extra fat trimmed, sausage hot not sweet, bones for stock">'+esc(sessionNotes)+'</textarea></label>';
     dBody.querySelector("#notes").oninput=function(e){sessionNotes=e.target.value;};
-    dFoot.innerHTML=(t.hasMeat?'<div class="tot"><span>Estimated cuts</span><span>~'+money(t.est)+'</span></div>':'')+(t.dep?'<div class="tot"><span>Holiday deposits</span><span>'+money(t.dep)+'</span></div>':'')+
-      '<p class="fine">Final price is set by the exact weight once cut. Holiday balances are paid at pickup.</p><button class="btn" type="button" id="toCheckout">Choose pickup or delivery</button>';
+    dFoot.innerHTML='<p class="fine">Priced by weight once cut. Nothing to pay online.</p><button class="btn" type="button" id="toCheckout">Choose pickup or delivery</button>';
     document.getElementById("toCheckout").onclick=function(){step="checkout";renderDrawer();dBody.scrollTop=0;};
   } else {
     var s=slots(), hasHol=cart.some(function(l){return byId[l.id].unit==="size";});
@@ -576,17 +575,13 @@ function renderDrawer(){
       (t.hasMeat?'<div class="row2"><label class="field" for="cDay"><span>Day</span><select id="cDay">'+s.map(function(x,i){return '<option value="'+i+'">'+x.label+'</option>';}).join("")+'</select></label><label class="field" for="cTime"><span>'+(mode==="pickup"?"Pickup time":"Delivery window")+'</span><select id="cTime"></select></label></div>':'')+
       (mode==="delivery"?'<label class="field" for="cAddr"><span>Street address</span><input id="cAddr" autocomplete="street-address"></label><label class="field" for="cZip"><span>Zip code</span><input id="cZip" inputmode="numeric" maxlength="5" autocomplete="postal-code"></label>':'')+
       '<div class="row2"><label class="field" for="cName"><span>Name</span><input id="cName" autocomplete="name"></label><label class="field" for="cPhone"><span>Mobile</span><input id="cPhone" type="tel" autocomplete="tel"></label></div>'+
-      '<label class="field" for="cEmail"><span>Email for receipt</span><input id="cEmail" type="email" autocomplete="email"></label>'+
-      '<label class="field" for="cCard"><span>Card (demo, do not enter a real card)</span><input id="cCard" value="4242 4242 4242 4242 · 12/29" disabled></label><p class="err" id="cErr" hidden></p>';
+      '<label class="field" for="cEmail"><span>Email (optional)</span><input id="cEmail" type="email" autocomplete="email"></label>'+'<p class="err" id="cErr" hidden></p>';
     function fillTimes(){var ts=document.getElementById("cTime");if(!ts)return;var sl=s[+document.getElementById("cDay").value],h=HOURS[sl.dow],o=[],st=earliest(sl,mode);
       if(mode==="pickup"){for(var x=st;x<h[1];x+=.5)o.push(fmtH(x));}else{for(var y=st;y+2<=h[1];y+=2)o.push(fmtH(y)+" to "+fmtH(y+2));}
       ts.innerHTML=o.map(function(v){return "<option>"+v+"</option>";}).join("");}
     if(t.hasMeat){document.getElementById("cDay").onchange=fillTimes;fillTimes();}
     dBody.querySelectorAll("[data-mode]").forEach(function(b){b.onclick=function(){mode=b.dataset.mode;renderDrawer();};});
-    var hold=t.est*1.1;
-    dFoot.innerHTML=(t.hasMeat?'<div class="tot"><span>Estimated cuts</span><span>~'+money(t.est)+'</span></div>':'')+(t.fee||mode==="delivery"&&t.hasMeat?'<div class="tot"><span>Delivery</span><span>'+(t.fee?money(t.fee):"Free over $150")+'</span></div>':'')+(t.dep?'<div class="tot"><span>Holiday deposits</span><span>'+money(t.dep)+'</span></div>':'')+
-      '<div class="tot big"><span>Due today</span><span>'+money(t.dep+t.fee)+(t.hasMeat?' + hold':'')+'</span></div>'+
-      (t.hasMeat?'<p class="fine">We place a temporary hold of '+money(hold)+' on your card and charge the exact amount after cutting.</p>':'')+
+    dFoot.innerHTML='<p class="fine">You pay '+(mode==="pickup"?"at the counter when you collect":"on delivery")+', by the exact weight.</p>'+
       '<div class="row2"><button class="btn ghost" type="button" id="back">Back</button><button class="btn" type="button" id="place">Place demo order</button></div>';
     document.getElementById("back").onclick=function(){step="cart";renderDrawer();};
     document.getElementById("place").onclick=place;
@@ -607,7 +602,7 @@ function place(){
   var when=document.getElementById("cDay")?(document.getElementById("cDay").selectedOptions[0].text+", "+document.getElementById("cTime").value):"the holiday pickup day";
   var num="FL-"+Math.floor(1000+Math.random()*9000), first=v("cName").split(" ")[0];
   step="done";dTitle.textContent="Order placed";
-  dBody.innerHTML='<div class="okmsg"><span class="label">Order '+num+'</span><h3>Thanks, '+esc(first)+'.</h3><p>'+(mode==="pickup"?"Pickup at 5 Jones Street, "+esc(when)+".":"Delivery "+esc(when)+".")+' We will text '+esc(v("cPhone"))+' when it is cut and ready.</p><p class="fine">This is a demo. No order was sent and no card was charged.</p></div>';
+  dBody.innerHTML='<div class="okmsg"><span class="label">Order '+num+'</span><h3>Thanks, '+esc(first)+'.</h3><p>'+(mode==="pickup"?"Pickup at 5 Jones Street, "+esc(when)+".":"Delivery "+esc(when)+".")+' We will text '+esc(v("cPhone"))+' when it is cut and ready.</p><p class="fine">This is a demo. No order was sent.</p></div>';
   dFoot.innerHTML='<button class="btn" type="button" id="doneBtn">Back to the shop</button>';
   cart=[];sessionNotes="";save();update();
   document.getElementById("doneBtn").onclick=closeCart;

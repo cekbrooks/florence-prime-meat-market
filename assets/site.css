@@ -62,6 +62,18 @@ header.top{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--p
 .mobilenav a[aria-current="page"]{color:var(--red)}
 
 .homeimg{width:220px;mix-blend-mode:multiply;margin-top:6px}
+/* Page hero */
+.pghero{background:var(--paper2);border-bottom:1px solid var(--line)}
+.pghero-in{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:48px;align-items:center;padding-block:56px 60px}
+.pghero-text{display:grid;gap:16px;align-content:center}
+.pghero h1{font-size:clamp(44px,6vw,76px);letter-spacing:-.015em}
+.pghero h1 em{display:block;font-size:.46em;color:var(--green2);margin-top:8px}
+.pghero .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:4px}
+.pghero-fig{margin:0;justify-self:center;background:var(--tag);border:1px solid var(--line);padding:14px;box-shadow:0 18px 40px -24px rgba(40,39,34,.45);transform:rotate(1.2deg)}
+.pghero-fig img{width:260px;mix-blend-mode:multiply}
+.pghero.big .pghero-fig img{width:300px}
+.pghero.strip .pghero-fig{transform:rotate(-1deg)}
+.pghero.strip .pghero-fig img{width:340px}
 /* Watercolor images */
 .pic{mix-blend-mode:multiply;height:auto}
 .pic.wide{width:min(360px,100%);margin-inline:auto}
@@ -228,7 +240,9 @@ footer .small{font:500 12px var(--label);letter-spacing:.16em;text-transform:upp
 
 @media (max-width:860px){
   .tiles{grid-template-columns:1fr}
-  .homeimg{width:200px;margin-inline:auto;grid-column:1/-1}
+  .pghero-in{grid-template-columns:1fr;gap:28px;padding-block:36px 40px}
+  .pghero-fig img,.pghero.big .pghero-fig img{width:min(240px,70vw)}
+  .pghero.strip .pghero-fig img{width:min(320px,78vw)}
   .pagehero{grid-template-columns:1fr;gap:20px}
   .pic.side{width:min(260px,80%);justify-self:center}
   .era{grid-template-columns:90px minmax(0,1fr)}

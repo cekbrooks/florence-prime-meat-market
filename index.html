@@ -75,18 +75,24 @@ header.top{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--p
 .mobilenav{border-top:1px solid var(--line);padding-block:8px 16px}
 .mobilenav a{display:block;padding:12px 0;border-bottom:1px solid var(--line);font:600 17px var(--label);letter-spacing:.12em;text-transform:uppercase;text-decoration:none}
 
-/* Hero */
-.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;padding-block:56px 64px}
-.hero h1{font-size:clamp(46px,7vw,92px);letter-spacing:-.02em}
-.hero h1 em{display:block;font-size:.5em;color:var(--green2)}
-.hero .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
-.postcard{background:var(--tag);padding:14px 14px 18px;border:1px solid var(--line);box-shadow:0 18px 40px -24px rgba(40,39,34,.45);transform:rotate(1.5deg);max-width:340px;justify-self:center}
-.postcard img{width:100%}
-.postcard figcaption{font:italic 15px var(--display);color:var(--muted);text-align:center;margin-top:10px}
-.facts{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:8px}
+/* Splash */
+.splash{min-height:100svh;display:grid;place-content:center;justify-items:center;gap:12px;text-align:center;padding:28px 20px calc(28px + var(--safeB));padding-top:calc(28px + var(--safeT))}
+.splash .rule{width:min(520px,80vw)}
+.splash h1{font-size:clamp(40px,6.4vw,76px);letter-spacing:-.02em}
+.splash .est{font:italic clamp(24px,3.4vw,38px) var(--display);color:var(--green2)}
+.storelink{display:block;border-radius:2px;transition:transform .35s ease}
+.storelink:hover{transform:scale(1.015)}
+.storelink img{width:min(400px,78vw);max-height:54svh;object-fit:contain;mix-blend-mode:multiply}
+.enter{font:italic 19px var(--display);color:var(--green2);text-decoration:none;animation:breathe 2.8s ease-in-out infinite}
+@keyframes breathe{50%{opacity:.55}}
+
+/* Story intro */
+.intro{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:start;margin-bottom:44px}
+.intro h2 em{display:block;font-size:.55em;color:var(--green2)}
+.facts{display:grid;gap:18px;border-left:1px solid var(--line);padding-left:28px}
 .facts div{display:grid}
-.facts b{font:400 30px var(--display);color:var(--green)}
-.facts span{font:500 12px var(--label);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.facts b{font:400 34px var(--display);color:var(--green);line-height:1.1}
+.facts span{font:500 12px/1.3 var(--label);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 
 /* Hours strip */
 .hours{background:var(--green);color:var(--onGreen)}
@@ -206,8 +212,10 @@ footer .small{font:500 12px var(--label);letter-spacing:.16em;text-transform:upp
 @media (max-width:860px){
   .links,.bar>.cta{display:none}
   .menubtn{display:block}
-  .hero,.hgrid,.newport,.two,.visit{grid-template-columns:1fr}
-  .hero{padding-block:36px 48px;gap:32px}
+  .intro,.hgrid,.newport,.two,.visit{grid-template-columns:1fr}
+  .intro{gap:28px}
+  .facts{border-left:0;padding-left:0;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+  .facts b{font-size:26px}
   .hours .wrap{grid-template-columns:1fr;gap:14px}
   .quotes{grid-template-columns:1fr}
   .era{grid-template-columns:90px minmax(0,1fr);gap:16px}
@@ -223,43 +231,58 @@ footer .small{font:500 12px var(--label);letter-spacing:.16em;text-transform:upp
 }
 </style>
 </head>
-<body>
+<body id="top">
 
+
+<div class="splash">
+  <div class="rule">◇</div>
+  <h1>Florence Prime Meat Market</h1>
+  <p class="est">Established 1936</p>
+  <div class="rule">◇</div>
+  <a class="storelink" href="#story" aria-label="Enter Florence Prime Meat Market"><img src="assets/storefront.webp" width="220" height="275" alt="Watercolor of the Florence Prime Meat Market storefront with its green awning at 5 Jones Street"></a>
+  <a class="enter" href="#story">Click the storefront to enter</a>
+</div>
 <div class="demo">Preview site · The shop is a demo · No orders are placed and no payments are taken</div>
-
 <header class="top">
   <div class="wrap bar">
-    <a class="brand" href="#top" id="top"><b>Florence Prime Meat Market</b><small>5 Jones St · Since 1936</small></a>
+    <a class="brand" href="#top"><b>Florence Prime Meat Market</b><small>5 Jones St · Since 1936</small></a>
     <nav class="links" aria-label="Main">
-      <a href="#shop">Shop</a><a href="#holiday">Thanksgiving</a><a href="#newport">Newport Steak</a><a href="#story">Our Story</a><a href="#commercial">Restaurants</a><a href="#visit">Visit</a>
+      <a href="#story">Our Story</a><a href="#newport">Newport Steak</a><a href="#shop">Shop</a><a href="#holiday">Thanksgiving</a><a href="#commercial">Restaurants</a><a href="#visit">Visit</a>
     </nav>
     <button class="btn small cartbtn" id="openCart" type="button" aria-label="Open your order">Order <span class="count" id="count">0</span></button>
     <button class="menubtn" id="menuBtn" type="button" aria-expanded="false" aria-controls="mobileNav" aria-label="Menu"><span></span></button>
   </div>
   <nav class="wrap mobilenav" id="mobileNav" hidden aria-label="Mobile">
-    <a href="#shop">Shop</a><a href="#holiday">Thanksgiving</a><a href="#newport">Newport Steak</a><a href="#story">Our Story</a><a href="#commercial">Restaurants</a><a href="#visit">Visit &amp; Hours</a>
+    <a href="#story">Our Story</a><a href="#newport">Newport Steak</a><a href="#shop">Shop</a><a href="#holiday">Thanksgiving</a><a href="#commercial">Restaurants</a><a href="#visit">Visit &amp; Hours</a>
   </nav>
 </header>
 
 <main>
-<section class="wrap hero">
-  <div class="stack">
-    <div class="kicker">Greenwich Village · New York</div>
-    <h1>Cut to order<em>since 1936</em></h1>
-    <p class="lede">A neighborhood butcher on Jones Street. Tell us the cut, the thickness and the trim, and we prepare it while you wait. Now you can order ahead for pickup or local delivery.</p>
-    <div class="actions">
-      <a class="btn" href="#shop">Order ahead</a>
-      <a class="btn ghost" href="#holiday">Thanksgiving pre-orders</a>
+<section class="block" id="story" style="border-top:0">
+  <div class="wrap">
+    <div class="intro">
+      <div class="stack">
+        <div class="kicker">Our story · Greenwich Village</div>
+        <h2>Cut to order<em>since 1936</em></h2>
+        <p class="lede">Florence opened at 5 Jones Street in 1936 and has been cutting meat to order on the same block ever since. You tell the butcher the cut, the thickness and the trim, and it is prepared while you wait.</p>
+        <p>In nearly ninety years the shop has had four owners. Each one learned the trade behind this counter before taking it over.</p>
+        <p class="script">Some things are worth keeping exactly as they are.</p>
+      </div>
+      <div class="facts">
+        <div><b>1936</b><span>Opened on Jones Street</span></div>
+        <div><b>4</b><span>Owners, one shop</span></div>
+        <div><b>Newport</b><span>Our signature steak</span></div>
+      </div>
     </div>
-    <div class="facts">
-      <div><b>1936</b><span>Opened on Jones St</span></div>
-      <div><b>4</b><span>Owners, one shop</span></div>
-      <div><b>Newport</b><span>Our signature steak</span></div>
+    <h3 style="margin-bottom:8px">Four owners. One tradition.</h3>
+    <div class="timeline">
+      <div class="era"><div class="year">1936</div><div><h3>Jack Ubaldi</h3><p>An Italian immigrant and master butcher opens Florence Prime Meat Market at 5 Jones Street and creates the Newport Steak.</p></div><div class="ph">Archive photo wanted</div></div>
+      <div class="era"><div class="year">1970s</div><div><h3>Tony Pellegrino</h3><p>Having worked the counter at Florence, Pellegrino buys the shop and keeps the cut-to-order tradition going.</p></div><div class="ph">Archive photo wanted</div></div>
+      <div class="era"><div class="year">1990s</div><div><h3>Benny Pizzuco</h3><p>Pizzuco carries Florence through another generation and keeps the service as personal as ever.</p></div><img src="assets/portrait-left.webp" width="130" height="120" alt="Watercolor portrait of Benny Pizzuco at work"></div>
+      <div class="era"><div class="year">2022</div><div><h3>Aristeo Quiñonez</h3><p>Aristeo started at Florence doing deliveries and cleaning. He learned the trade, became head butcher, and now runs the shop with his family.</p></div><img src="assets/portrait-right.webp" width="130" height="120" alt="Watercolor portrait of Aristeo Quiñonez outside the shop"></div>
     </div>
   </div>
-  <figure class="postcard"><img src="assets/storefront.webp" width="220" height="275" alt="Watercolor of the Florence Prime Meat Market storefront with its green awning at 5 Jones Street"><figcaption>5 Jones Street, New York</figcaption></figure>
 </section>
-
 <div class="hours" aria-label="Opening hours">
   <div class="wrap">
     <div class="label">Shop hours<br><span style="font-weight:500;letter-spacing:.06em;text-transform:none">Sample hours, confirm before launch</span></div>
@@ -267,39 +290,6 @@ footer .small{font:500 12px var(--label);letter-spacing:.16em;text-transform:upp
     <div class="status" id="status"><i></i><span>Open</span></div>
   </div>
 </div>
-
-<section class="block" id="shop">
-  <div class="wrap">
-    <div class="head">
-      <div class="kicker">Order ahead</div>
-      <h2>At the counter</h2>
-      <p class="lede">Pick your cuts and how you want them. We cut everything fresh on the day, then call or text when it is ready.</p>
-    </div>
-    <div class="filters" id="filters" role="group" aria-label="Filter by category"></div>
-    <div class="grid" id="grid"></div>
-    <p class="weightnote">Meat is sold by weight, so totals are estimates. We hold your card for the estimate and charge the exact weight once your order is cut. If it comes in heavier, you never pay more than 10% over the estimate.</p>
-  </div>
-</section>
-
-<section class="block holiday" id="holiday">
-  <div class="wrap hgrid">
-    <div class="stack">
-      <div class="kicker">Holiday table</div>
-      <h2>Thanksgiving pre-orders</h2>
-      <p class="lede">Fresh turkeys, standing rib roasts and crown roasts, reserved now and cut for you that week.</p>
-      <div class="deadline"><span class="label" style="color:inherit">Order by</span><b>Friday, Nov 20</b><span>Pickup Tue Nov 24 or Wed Nov 25</span></div>
-    </div>
-    <div class="stack">
-      <ol class="steps">
-        <li><div><b>Reserve online.</b> Choose the size you need. A $25 deposit holds it.</div></li>
-        <li><div><b>We source and prepare.</b> Turkeys come in fresh, never frozen. Roasts are trimmed and tied.</div></li>
-        <li><div><b>Pick up the week of.</b> Pay the balance by actual weight when you collect.</div></li>
-      </ol>
-      <div class="grid" id="holidayGrid"></div>
-    </div>
-  </div>
-</section>
-
 <section class="block" id="newport">
   <div class="wrap newport">
     <div class="stack">
@@ -332,22 +322,41 @@ footer .small{font:500 12px var(--label);letter-spacing:.16em;text-transform:upp
     </figure>
   </div>
 </section>
-
-<section class="block" id="story">
+<section class="block" id="shop">
   <div class="wrap">
     <div class="head">
-      <div class="kicker">History</div>
-      <h2>Four owners. One shop.</h2>
-      <p class="lede">Florence has passed from butcher to butcher, each one learning the trade behind this counter before taking it over.</p>
+      <div class="kicker">Order ahead</div>
+      <h2>At the counter</h2>
+      <p class="lede">Pick your cuts and how you want them. We cut everything fresh on the day, then call or text when it is ready.</p>
     </div>
-    <div class="timeline">
-      <div class="era"><div class="year">1936</div><div><h3>Jack Ubaldi</h3><p>An Italian immigrant and master butcher opens Florence Prime Meat Market at 5 Jones Street and creates the Newport Steak.</p></div><div class="ph">Archive photo wanted</div></div>
-      <div class="era"><div class="year">1970s</div><div><h3>Tony Pellegrino</h3><p>Having worked the counter at Florence, Pellegrino buys the shop and keeps the cut-to-order tradition going.</p></div><div class="ph">Archive photo wanted</div></div>
-      <div class="era"><div class="year">1990s</div><div><h3>Benny Pizzuco</h3><p>Pizzuco carries Florence through another generation and keeps the service as personal as ever.</p></div><img src="assets/portrait-left.webp" width="130" height="120" alt="Watercolor portrait of Benny Pizzuco at work"></div>
-      <div class="era"><div class="year">2022</div><div><h3>Aristeo Quiñonez</h3><p>Aristeo started at Florence doing deliveries and cleaning. He learned the trade, became head butcher, and now runs the shop with his family.</p></div><img src="assets/portrait-right.webp" width="130" height="120" alt="Watercolor portrait of Aristeo Quiñonez outside the shop"></div>
+    <div class="filters" id="filters" role="group" aria-label="Filter by category"></div>
+    <div class="grid" id="grid"></div>
+    <p class="weightnote">Meat is sold by weight, so totals are estimates. We hold your card for the estimate and charge the exact weight once your order is cut. If it comes in heavier, you never pay more than 10% over the estimate.</p>
+  </div>
+</section>
+<section class="block holiday" id="holiday">
+  <div class="wrap hgrid">
+    <div class="stack">
+      <div class="kicker">Holiday table</div>
+      <h2>Thanksgiving pre-orders</h2>
+      <p class="lede">Fresh turkeys, standing rib roasts and crown roasts, reserved now and cut for you that week.</p>
+      <div class="deadline"><span class="label" style="color:inherit">Order by</span><b>Friday, Nov 20</b><span>Pickup Tue Nov 24 or Wed Nov 25</span></div>
+    </div>
+    <div class="stack">
+      <ol class="steps">
+        <li><div><b>Reserve online.</b> Choose the size you need. A $25 deposit holds it.</div></li>
+        <li><div><b>We source and prepare.</b> Turkeys come in fresh, never frozen. Roasts are trimmed and tied.</div></li>
+        <li><div><b>Pick up the week of.</b> Pay the balance by actual weight when you collect.</div></li>
+      </ol>
+      <div class="grid" id="holidayGrid"></div>
     </div>
   </div>
 </section>
+
+
+
+
+
 
 <section class="block">
   <div class="wrap">
